@@ -1,0 +1,31 @@
+name: "°dentity"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  odentity-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -la
+      - name: push o-website
+        id: owebsite
+        uses: textileio/github-action-buckets@v20
+        with:
+          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+          bucket: "o-website"
+          thread: "bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva"
+          path: "src/"
+      - run: echo "bucket - ${{ steps.owebsite.outputs.key }}"
+      - run: echo "ipfs - ${{ steps.owebsite.outputs.ipfs }}"
+      - run: echo "ipfs link - ${{ steps.owebsite.outputs.ipfsUrl }}"
+      - run: echo "ipns - ${{ steps.owebsite.outputs.ipns }}"
+      - run: echo "ipns link - ${{ steps.owebsite.outputs.ipnsUrl }}"
+      - run: echo "hub - ${{ steps.owebsite.outputs.hub }}"
+      - run: echo "www - ${{ steps.owebsite.outputs.www }}"

@@ -1,0 +1,26 @@
+{
+    "title": "Omo Earth",
+    "dataSources": [
+        "wallet.de.json",
+        "wallet.en.json"
+    ],
+    "ui": {
+        "type": "CssGridTemplate",
+        "definition": {
+            "templateAreas": "'main'",
+            "templateColumns": "1fr",
+            "templateRows": "100%"
+        },
+        "children": [
+            {
+                "child": {
+                    "type": "Molecule",
+                    "viewName": "WebsiteLandingPage"
+                },
+                "args": {
+                    "area": "main"
+                }
+            }
+        ]
+    }
+}
